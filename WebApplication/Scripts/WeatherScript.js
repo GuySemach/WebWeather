@@ -1,6 +1,7 @@
 ﻿window.weather = (function () {
     var weather = {};
     var geo = {};
+    var webSiteUrl = 'https://localhost:44305/Weather/';
 
     Vue.component("weatherReport", {
         props: {
@@ -56,7 +57,7 @@
                 this.isMoreDetails = false;
 
                 if (value.target.selectedOptions.length > 0) {
-                    var controllerUrl = 'https://localhost:44305/Weather/';
+                    var controllerUrl = webSiteUrl;
                     var actionName = 'GetWeatherReport';
                     var selectedCity = value.target.selectedOptions[0].value;
                     if (selectedCity == "My current location") {
