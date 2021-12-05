@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div>
+        <h2>Header</h2>
+    </div>
+    <div id="app">
+        <div>
+            <select v-on:select="onCitySelect" v-on:change="onCityChange">
+                <!--<option value="value">{{product}}</option>-->
+                <option v-for="city in cities">{{city}}</option>
+            </select>
+        </div>
+        <section v-if="errored">
+            <p>We're sorry, we're not able to retrieve this information at the moment, please try again later</p>
+        </section>
+        <!--{{ info }}-->
+        <div v-if="isCitySelected">
+            <div>
+                <p>Report 1</p>
+                <div>
+                    {{cityDetails.name}}
+                    <div v-for="item in cityDetails.weather">
+                        {{description}}
+                    </div>
+                    <div>{{cityDetails.weatherMain}}</div>
+                    <div>{{cityDetails.weatherDescription}}</div>
+                    <div>{{cityDetails.weatherTemp}}</div>
+                    <div>{{cityDetails.weatherFeelsLike}}</div>
+                    <div>{{cityDetails.weatherHumidity}}</div>
+                    <!--{{cityDetails.weather[0].description}}-->
+                </div>
+                <iframe src="blank" id="iframWeather"></iframe>
+            </div>
+            <div>
+                <p>Report 2</p>
+            </div>
+            <div>
+                <p>Report 3</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="WeatherScript.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+﻿<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+@{
+    ViewBag.Title = "Weather site";
+}
+
+<h2>Weather Reports</h2>
+
+<div id="app">
+    <div>
+        <select v-on:change="onCityChange">
+            <option v-for="city in cities">{{city}}</option>
+        </select>
+    </div>
+
+    <section v-if="errored">
+        <p>We're sorry, we're not able to retrieve this information at the moment, please try again later</p>
+    </section>
+
+    <div v-if="isCitySelected">
+        <div>
+            <p>weather Report</p>
+            <div>
+                <div v-for="weather in cityDetails.weather" style="border:1px black">
+                    <h3>City: {{cityDetails.name}}</h3>
+                    <h4>main: {{weather.main}}</h4>
+                    <h4>Description: {{weather.description}}</h4>
+                    <h5 v-if="!isMoreDetails" v-on:click="onMoreDetailsClick">Click here for more details</h5>
+                    <h5 v-if="isMoreDetails" v-on:click="onMoreDetailsClick">Click here for less details</h5>
+                </div>
+            </div>
+        </div>
+        <div id="vueComponents">
+            @*trying of components in Vue*@
+            <weatherReport cityName="Tel Aviv"></weatherReport>
+            <weatherReport cityName="London"></weatherReport>
+            <weatherReport cityName="Paris"></weatherReport>
+        </div>
+
+        <section v-if="isMoreDetails" id="moreDetailsSection">
+            <p>coordination</p>
+            <p>log: {{cityDetails.coord.lon}}</p>
+            <p>lat: {{cityDetails.coord.lat}}</p>
+            <p>timezone: {{cityDetails.timezone}}</p>
+            <p>feels like: {{cityDetails.main.feels_like}}</p>
+        </section>
+
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/WeatherSite")
