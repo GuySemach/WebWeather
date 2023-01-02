@@ -18,6 +18,8 @@ namespace WebApplication.Logic
             {
                 // comment from GitHub
                 cityName = GetParamToWebServiceWeather(cityName);
+                // comment from branch2
+                // another comment ... what should we do?!
                 string weatherApi = "https://api.openweathermap.org/data/2.5/weather?" + cityName + "&appid=6cd960de9861381feba7c74fdb89a49a";
                 WeatherModel vm = new WeatherModel();
                 HttpResponseMessage response = await client.GetAsync(weatherApi).ConfigureAwait(false);
