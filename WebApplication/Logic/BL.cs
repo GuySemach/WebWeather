@@ -16,6 +16,7 @@ namespace WebApplication.Logic
         {
             try
             {
+                // comment from GitHub
                 cityName = GetParamToWebServiceWeather(cityName);
                 string weatherApi = "https://api.openweathermap.org/data/2.5/weather?" + cityName + "&appid=6cd960de9861381feba7c74fdb89a49a";
                 WeatherModel vm = new WeatherModel();
